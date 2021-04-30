@@ -1,3 +1,55 @@
-.heading {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,700;1,700&display=swap');
+
+@import '../../scss/variables';
+
+.navbar {
+  height: 7.5vh;
+
+  &--container {
+    width: 80vw;
+    margin: 0px auto;
+
+    height: inherit;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    &-icon {
+      color: #131200;
+      font-size: 3em;
+    }
+
+    &-text {
+      font-family: 'Balsamiq Sans', cursive;
+      font-weight: bold;
+      font-size: 2em;
+      margin-left: 10px;
+      color: #131200;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+
+    &-link {
+      font-size: 1.25em;
+      margin: 10px 15px;
+      padding: 5px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $primary-color;
+      }
+    }
+  }
 }
