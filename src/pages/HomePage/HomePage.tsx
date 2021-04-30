@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Slider from '../../components/Slider/Slider';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 
 interface Props {}
@@ -11,6 +12,7 @@ export default class HomePage extends Component<Props, State> {
     return (
       <div>
         <NavigationBar />
+        <Slider />
       </div>
     );
   }

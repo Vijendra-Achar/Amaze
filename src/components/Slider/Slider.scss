@@ -1,0 +1,15 @@
+@import '../../scss/variables';
+
+.slider {
+  width: 90%;
+  margin: 50px auto;
+
+  &__slide {
+    &-img {
+      border-radius: 10px;
+      width: inherit;
+      object-fit: cover;
+      height: 550px;
+    }
+  }
+}
