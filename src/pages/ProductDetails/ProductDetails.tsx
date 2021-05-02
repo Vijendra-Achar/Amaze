@@ -3,5 +3,9 @@ import React from 'react';
 import './ProductDetails.scss';
 
 export default function ProductDetails() {
-  return <div></div>;
+  return (
+    <div>
+      <h2>Hello From the ProductDetails</h2>
+    </div>
+  );
 }
