@@ -10,3 +10,7 @@ body {
   font-size: 16px;
   font-family: 'Nunito', sans-serif;
 }
+
+body::-webkit-scrollbar {
+  font-display: none;
+}
