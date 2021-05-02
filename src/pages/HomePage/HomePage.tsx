@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import Slider from '../../components/Slider/Slider';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
-import CategoryCard from '../../components/CategoryCard/CategoryCard';
+import CategoryContainer from '../../components/CategoryContainer/CategoryContainer';
 
 interface Props {}
 interface State {}
@@ -16,7 +16,7 @@ export default class HomePage extends Component<Props, State> {
         <NavigationBar />
         <Slider />
 
-        <CategoryCard />
+        <CategoryContainer />
       </div>
     );
   }
