@@ -3,11 +3,13 @@
 @import '../../scss/variables';
 
 .navbar {
-  height: 7.5vh;
-  box-shadow: 0px 10px 10px -5px $primary-color;
+  height: 6vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: saturate(150%) blur(10px);
+  font-size: 12px;
 
   &--container {
-    width: 90vw;
+    width: 75vw;
     margin: 0px auto;
 
     height: inherit;
@@ -18,23 +20,11 @@
     align-items: center;
   }
 
-  &__logo {
-    display: flex;
-    align-items: center;
+  &__logo-image {
+    height: 28px;
+    width: 28px;
     cursor: pointer;
-
-    &-icon {
-      color: #131200;
-      font-size: 3em;
-    }
-
-    &-text {
-      font-family: 'Balsamiq Sans', cursive;
-      font-weight: bold;
-      font-size: 2em;
-      margin-left: 10px;
-      color: #131200;
-    }
+    filter: invert(98%) sepia(100%) saturate(9%) hue-rotate(146deg) brightness(101%) contrast(104%);
   }
 
   &__links {
@@ -43,19 +33,26 @@
 
     &-link {
       font-size: 1.25em;
+      color: $white-color;
       margin: 10px 5px;
       padding: 5px 15px;
       border-radius: 10px;
       cursor: pointer;
 
       &:hover {
-        background-color: $primary-color;
+        color: darken($white-color, 20%);
+      }
+
+      .bag {
+        &__icon {
+          font-size: 1.2em;
+        }
       }
 
       .user {
-        display: flex;
-        align-items: center;
-
+        &__icon {
+          font-size: 1.2em;
+        }
         &__username {
           margin: 0px 5px;
         }

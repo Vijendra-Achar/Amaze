@@ -1,6 +1,8 @@
+@import '../../scss/common';
+
 .category {
   &--container {
-    width: 90%;
+    width: 75vw;
     margin: 0px auto;
     display: flex;
     justify-content: space-between;

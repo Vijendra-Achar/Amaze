@@ -13,9 +13,7 @@ export default class HomePage extends Component<Props, State> {
   render() {
     return (
       <div>
-        <NavigationBar />
         <Slider />
-
         <CategoryContainer />
       </div>
     );

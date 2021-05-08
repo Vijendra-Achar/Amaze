@@ -1,3 +1,4 @@
+@import '../../scss/variables';
 .category-card {
   border-radius: 10px;
 
@@ -57,6 +58,7 @@
     z-index: 1;
     font-size: 2em;
     font-weight: bold;
-    color: #fff;
+    margin: 20px auto;
+    color: $white-color;
   }
 }
