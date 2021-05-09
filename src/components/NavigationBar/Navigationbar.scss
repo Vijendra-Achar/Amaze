@@ -21,8 +21,8 @@
   }
 
   &__logo-image {
-    height: 28px;
-    width: 28px;
+    height: 32px;
+    width: 32px;
     cursor: pointer;
     filter: invert(98%) sepia(100%) saturate(9%) hue-rotate(146deg) brightness(101%) contrast(104%);
   }
@@ -38,20 +38,21 @@
       padding: 5px 15px;
       border-radius: 10px;
       cursor: pointer;
+      transition: all 0.2s ease-in;
 
       &:hover {
-        color: darken($white-color, 20%);
+        color: darken($white-color, 30%);
       }
 
       .bag {
         &__icon {
-          font-size: 1.2em;
+          font-size: 1.25em;
         }
       }
 
       .user {
         &__icon {
-          font-size: 1.2em;
+          font-size: 1.25em;
         }
         &__username {
           margin: 0px 5px;

@@ -15,8 +15,10 @@ function App() {
         <NavigationBar />
       </nav>
 
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/category/:categoryName" component={CategoryPage} />
+      <section className="container">
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/category/:categoryId" component={CategoryPage} />
+      </section>
     </div>
   );
 }
