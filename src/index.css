@@ -14,21 +14,22 @@ body {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+  /* width: 8px; */
+  display: none;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
   background: #f9f6ef;
-}
+} */
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
   background: #888888;
   border-radius: 8px;
-}
+} */
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover {
   background: #555555;
-}
+} */

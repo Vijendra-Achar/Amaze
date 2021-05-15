@@ -21,8 +21,8 @@
   }
 
   &__logo-image {
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: 28px;
     cursor: pointer;
     filter: invert(98%) sepia(100%) saturate(9%) hue-rotate(146deg) brightness(101%) contrast(104%);
   }
@@ -32,7 +32,7 @@
     align-items: center;
 
     &-link {
-      font-size: 1.25em;
+      font-size: $nav-item-size;
       color: $white-color;
       margin: 10px 5px;
       padding: 5px 15px;
@@ -46,13 +46,13 @@
 
       .bag {
         &__icon {
-          font-size: 1.25em;
+          font-size: $nav-icon-size;
         }
       }
 
       .user {
         &__icon {
-          font-size: 1.25em;
+          font-size: $nav-icon-size;
         }
         &__username {
           margin: 0px 5px;
