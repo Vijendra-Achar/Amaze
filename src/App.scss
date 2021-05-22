@@ -8,8 +8,14 @@ nav {
 }
 
 .container {
-  margin: $nav-height auto;
+  margin: 3.75em auto;
   &__main {
     width: 75vw;
   }
 }
+
+// footer {
+//   position: absolute;
+//   width: 100%;
+//   bottom: 0;
+// }

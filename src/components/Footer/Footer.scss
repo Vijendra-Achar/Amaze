@@ -1,0 +1,25 @@
+@import './../../scss/variables';
+
+.footer {
+  height: 135px;
+  background-color: $footer-background-color;
+  color: $footer-font-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__text {
+    margin: 6px 0px;
+  }
+
+  a {
+    text-decoration: none;
+    color: $footer-font-color;
+    margin: 0px 5px;
+
+    &:hover {
+      color: $link-hover-color;
+      text-decoration: underline;
+    }
+  }
+}
