@@ -3,10 +3,9 @@
 @import '../../scss/variables';
 
 .navbar {
-  height: 6vh;
+  height: $nav-height;
   background-color: rgba(0, 0, 0, 0.8);
   backdrop-filter: saturate(150%) blur(10px);
-  font-size: 12px;
 
   &--container {
     width: 75vw;
@@ -21,8 +20,8 @@
   }
 
   &__logo-image {
-    height: 28px;
-    width: 28px;
+    height: 32px;
+    width: 32px;
     cursor: pointer;
     filter: invert(98%) sepia(100%) saturate(9%) hue-rotate(146deg) brightness(101%) contrast(104%);
   }

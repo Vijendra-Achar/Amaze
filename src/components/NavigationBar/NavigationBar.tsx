@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
 import amazonLogo from '../../assets/amazon.svg';
@@ -7,6 +7,12 @@ import './Navigationbar.scss';
 interface props extends RouteComponentProps {}
 
 function NavigationBar({ history }: props) {
+  const [userState, setUserState] = useState(false);
+
+  function toggeUserState() {
+    setUserState(!userState);
+  }
+
   return (
     <div className="navbar">
       <div className="navbar--container">
@@ -29,8 +35,10 @@ function NavigationBar({ history }: props) {
             <i className="fas fa-shopping-bag bag__icon"></i>
           </div>
 
-          <div className="navbar__links-link user">
-            <i className="far fa-user-circle user__icon"></i>
+          <div onClick={toggeUserState} className="navbar__links-link user">
+            {/*  */}
+            {!userState && <i className="fas fa-sign-in-alt user__icon"></i>}
+            {userState && <i className="far fa-user-circle user__icon"></i>}
           </div>
 
           {/* <div className="navbar__links-link">Login</div> */}
