@@ -1,6 +1,46 @@
+@import './variables';
+
 .container {
   &__main {
     width: 75vw;
-    margin: 6vh auto;
+    margin: 3.75em auto;
+  }
+}
+
+.material-input-outline {
+  position: relative;
+  font-size: 1em;
+
+  padding-top: 20px;
+  margin-bottom: 20px;
+
+  input {
+    background-color: $white-color;
+    border: none;
+    border: 1px solid aqua;
+    appearance: none;
+    padding: 22px 15px;
+    border-radius: 10px;
+    width: 250px;
+    outline: none;
+    font-size: 1em;
+  }
+
+  .placeholder {
+    position: absolute;
+    left: 15px;
+    font-size: 1em;
+    top: calc(50% + 9px);
+    transform: translateY(-50%);
+    color: black;
+    transition: all 0.3s ease-out;
+  }
+
+  & input:focus + .placeholder,
+  & input:valid + .placeholder {
+    top: 12px;
+    left: 15px;
+    font-size: 0.8em;
+    color: #222;
   }
 }
