@@ -15,11 +15,11 @@
   margin-bottom: 20px;
 
   input {
-    background-color: $white-color;
+    // background-color: ;
     border: none;
-    border: 1px solid aqua;
+    border: 2px solid $nav-color;
     appearance: none;
-    padding: 22px 15px;
+    padding: 15px;
     border-radius: 10px;
     width: 250px;
     outline: none;
@@ -36,11 +36,16 @@
     transition: all 0.3s ease-out;
   }
 
-  & input:focus + .placeholder,
-  & input:valid + .placeholder {
-    top: 12px;
+  & input:valid + .placeholder,
+  & input:focus + .placeholder
+  // & input:not(:placeholder-shown) + .placeholder
+  {
+    top: 6px;
     left: 15px;
-    font-size: 0.8em;
-    color: #222;
+    font-size: 0.9em;
+    font-weight: bold;
+    background-color: $white-color;
+    padding: 0px 5px;
+    color: $nav-color;
   }
 }
