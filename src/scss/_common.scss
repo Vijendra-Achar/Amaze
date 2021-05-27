@@ -15,15 +15,15 @@
   margin-bottom: 20px;
 
   input {
-    // background-color: ;
     border: none;
     border: 2px solid $nav-color;
     appearance: none;
     padding: 15px;
     border-radius: 10px;
-    width: 250px;
+    width: 350px;
     outline: none;
     font-size: 1em;
+    margin: 25px 0px;
   }
 
   .placeholder {
@@ -37,9 +37,7 @@
   }
 
   & input:valid + .placeholder,
-  & input:focus + .placeholder
-  // & input:not(:placeholder-shown) + .placeholder
-  {
+  & input:focus + .placeholder {
     top: 6px;
     left: 15px;
     font-size: 0.9em;
@@ -47,5 +45,12 @@
     background-color: $white-color;
     padding: 0px 5px;
     color: $nav-color;
+  }
+
+  // Error message
+  .input__error {
+    font-size: 0.8em;
+    margin: 8px 12px;
+    color: $danger-color;
   }
 }
