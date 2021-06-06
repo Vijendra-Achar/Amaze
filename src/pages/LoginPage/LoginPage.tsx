@@ -5,7 +5,7 @@ import './LoginPage.scss';
 export default class LoginPage extends Component {
   render() {
     return (
-      <div className=" login container__main">
+      <div className="login container__main">
         <div className="login__title">Please sign in.</div>
 
         <div className="login__email">
@@ -23,6 +23,10 @@ export default class LoginPage extends Component {
             <input id="password" type="password" required />
             <span className="placeholder">Password</span>
           </label>
+        </div>
+
+        <div className="login__button">
+          <button className="material-btn">Sign me in!</button>
         </div>
       </div>
     );

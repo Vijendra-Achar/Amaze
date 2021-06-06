@@ -19,11 +19,11 @@
     border: 2px solid $nav-color;
     appearance: none;
     padding: 15px;
-    border-radius: 10px;
+    border-radius: 5px;
     width: 350px;
     outline: none;
     font-size: 1em;
-    margin: 25px 0px;
+    margin: 5px 0px;
   }
 
   .placeholder {
@@ -36,6 +36,10 @@
     transition: all 0.3s ease-out;
   }
 
+  & input:focus {
+    border-color: $primary-color;
+  }
+
   & input:valid + .placeholder,
   & input:focus + .placeholder {
     top: 6px;
@@ -44,7 +48,7 @@
     font-weight: bold;
     background-color: $white-color;
     padding: 0px 5px;
-    color: $nav-color;
+    color: $primary-color;
   }
 
   // Error message
@@ -53,4 +57,16 @@
     margin: 8px 12px;
     color: $danger-color;
   }
+}
+
+.material-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25em;
+  padding: 15px 25px;
+  color: $white-color;
+  border-radius: 5px;
+  width: 350px;
+  background-color: $primary-color;
 }

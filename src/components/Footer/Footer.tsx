@@ -18,8 +18,8 @@ function Footer() {
           <div className="footer__text">
             Copyright © 2021 Amaze Inc. All rights reserved.
             <span className="footer__links">
-              <a href="#">Privacy Policy</a>|<a href="#">Terms of use</a>|<a href="#">Sales Policy</a>|
-              <a href="#">Legal</a>|<a href="#">Site Map</a>
+              <a href="/#">Privacy Policy</a>|<a href="/#">Terms of use</a>|<a href="/#">Sales Policy</a>|
+              <a href="/#">Legal</a>|<a href="/#">Site Map</a>
             </span>
           </div>
         </div>
