@@ -8,9 +8,23 @@
     align-items: center;
   }
 
-  // &__left-side {
-  //   // background-color: aqua;
-  // }
+  &__left-side {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__divider {
+    border-left: 1px solid $black-color;
+    height: 350px;
+    display: flex;
+    align-items: center;
+
+    .or {
+      margin-left: -50%;
+      padding: 10px 0px;
+      background-color: $white-color;
+    }
+  }
 
   &__right-side {
     height: 100%;
@@ -18,7 +32,7 @@
     display: flex;
 
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
 
     .material-btn {
       margin: 30px 0px;
@@ -29,6 +43,13 @@
 
       &.facebook {
         background-color: $facebook-blue-color;
+      }
+
+      &.google,
+      &.facebook {
+        i {
+          margin: 0px 10px;
+        }
       }
     }
   }

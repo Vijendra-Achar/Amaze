@@ -9,7 +9,9 @@ export default class LoginPage extends Component {
       <div className="login container__main">
         <div className="login__title">Please sign in.</div>
 
+        {/* Main container */}
         <div className="login__main-block">
+          {/* Left side of the container -- login with email and password part */}
           <div className="login__left-side">
             <div className="login__email">
               <label className="material-input-outline" htmlFor="email_id">
@@ -45,6 +47,11 @@ export default class LoginPage extends Component {
             </div>
           </div>
 
+          <div className="login__divider">
+            <span className="or">OR</span>
+          </div>
+
+          {/* Right side of the container -- login with facebook and google part */}
           <div className="login__right-side">
             <button className="material-btn google">
               <i className="fab fa-google-plus-g"></i> Login with Google
