@@ -1,0 +1,29 @@
+@import '../../scss/variables';
+
+.signup {
+  &__title {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 10% 0 2% 0;
+  }
+
+  &__username {
+    &.block {
+      display: flex;
+    }
+
+    &.firstname,
+    &.lastname {
+      input {
+        width: 170px;
+      }
+      margin: 0px 10px 0px 0px;
+    }
+  }
+
+  &__email,
+  &__dateOfBirth,
+  &__terms {
+    margin: 15px 0px;
+  }
+}

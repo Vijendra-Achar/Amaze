@@ -6,6 +6,7 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import HomePage from './pages/HomePage/HomePage';
 import Footer from './components/Footer/Footer';
 import LoginPage from './pages/LoginPage/LoginPage';
+import SignUpPage from './pages/SignUpPage/SignUpPage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
 
 import './App.scss';
@@ -20,6 +21,7 @@ function App() {
       <section className="container">
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/signup" component={SignUpPage} />
         <Route exact path="/category/:categoryId" component={CategoryPage} />
       </section>
 
