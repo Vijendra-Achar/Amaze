@@ -1,5 +1,6 @@
 import React from 'react';
 
+import './FormTextInput.scss';
 interface FormTextInputProps {
   label: string;
   name: string;
@@ -13,7 +14,7 @@ interface FormTextInputProps {
 function FormTextInput({ handleChange, value, type, label, name, id, required }: FormTextInputProps) {
   return (
     <div>
-      <label className="material-input-outline" htmlFor="emailId">
+      <label className="material-input-outline" htmlFor={id}>
         <input
           name={name}
           id={id}

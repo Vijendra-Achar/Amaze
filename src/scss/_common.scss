@@ -7,63 +7,6 @@
   }
 }
 
-.material-input-outline {
-  position: relative;
-  font-size: 1em;
-
-  padding-top: 20px;
-  margin-bottom: 20px;
-
-  input,
-  select {
-    border: none;
-    border: 2px solid $nav-color;
-    appearance: none;
-    padding: 15px;
-    border-radius: 5px;
-    width: 350px;
-    outline: none;
-    font-size: 1em;
-    box-sizing: border-box;
-    border: 1px solid $black-color;
-    margin: 5px 0px;
-  }
-
-  .placeholder {
-    position: absolute;
-    left: 15px;
-    font-size: 1em;
-    top: calc(50% + 9px);
-    transform: translateY(-50%);
-    color: black;
-    transition: all 0.3s ease-out;
-  }
-
-  & input:focus {
-    border: 1px solid $primary-color;
-  }
-
-  & input:valid + .placeholder,
-  & input:focus + .placeholder,
-  & select:valid + .placeholder,
-  & select:focus + .placeholder {
-    top: 6px;
-    left: 15px;
-    font-size: 0.9em;
-    font-weight: bold;
-    background-color: $white-color;
-    padding: 0px 5px;
-    color: $primary-color;
-  }
-
-  // Error message
-  .input__error {
-    font-size: 0.8em;
-    margin: 8px 12px;
-    color: $danger-color;
-  }
-}
-
 .material-btn {
   outline: none;
   border: none;
