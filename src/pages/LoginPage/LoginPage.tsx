@@ -1,9 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import FormTextInput from '../../components/FormTextInput/FormTextInput';
+
 import './LoginPage.scss';
 
-export default class LoginPage extends Component {
+interface LoginProps {}
+
+interface LoginState {
+  emailId: string;
+  password: string;
+}
+export default class LoginPage extends Component<LoginProps, LoginState> {
+  constructor(props: LoginProps) {
+    super(props);
+
+    this.state = {
+      emailId: '',
+      password: '',
+    };
+  }
+
+  handleLoginSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+
+    this.setState({ emailId: '', password: '' });
+  };
+
+  handleLoginChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const { name, value } = event.target;
+
+    this.setState({ [name]: value } as Pick<LoginState, keyof LoginState>);
+
+    console.log(`${name} : ${value}`);
+  };
+
   render() {
     return (
       <div className="login container__main">
@@ -13,26 +44,36 @@ export default class LoginPage extends Component {
         <div className="login__main-block">
           {/* Left side of the container -- login with email and password part */}
           <div className="login__left-side">
-            <div className="login__email">
-              <label className="material-input-outline" htmlFor="email_id">
-                <input id="email_id" type="text" required />
-                <span className="placeholder">Email</span>
-                {/* <p className="input__error">
-              <i className="fas fa-exclamation-circle"></i> Email ID is missing
-            </p> */}
-              </label>
-            </div>
+            <form onSubmit={this.handleLoginSubmit}>
+              <div className="login_email">
+                <FormTextInput
+                  name="emailId"
+                  value={this.state.emailId}
+                  label="Email"
+                  type="text"
+                  handleChange={this.handleLoginChange}
+                  required
+                />
+              </div>
 
-            <div className="login__password">
-              <label className="material-input-outline" htmlFor="password">
-                <input id="password" type="password" required />
-                <span className="placeholder">Password</span>
-              </label>
-            </div>
+              <div className="login__password">
+                <FormTextInput
+                  id="password"
+                  label="Password"
+                  value={this.state.password}
+                  handleChange={this.handleLoginChange}
+                  type="password"
+                  name="password"
+                  required
+                />
+              </div>
 
-            <div className="login__button">
-              <button className="material-btn">Sign me in!</button>
-            </div>
+              <div className="login__button">
+                <button type="submit" className="material-btn">
+                  Sign me in!
+                </button>
+              </div>
+            </form>
 
             <div className="login__link">
               <Link className="link" to="/#">
