@@ -41,7 +41,7 @@ export default class LoginPage extends Component {
             </div>
 
             <div className="login__link">
-              <Link className="link" to="/#">
+              <Link className="link" to="/signup">
                 Don't have an account? Create a new one!
               </Link>
             </div>

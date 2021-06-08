@@ -11,6 +11,7 @@ nav {
 
 .container {
   margin: 3.75em auto;
+  min-height: calc(100vh - 200px - 3.75em);
   &__main {
     width: 75vw;
   }
