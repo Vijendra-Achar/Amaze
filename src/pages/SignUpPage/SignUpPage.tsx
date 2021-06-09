@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
+import FormDatePicker from '../../components/FormDatePicker/FormDatePicker';
 
 import './SignUpPage.scss';
 
@@ -9,7 +10,7 @@ interface SignupState {
   firstname: string;
   lastname: string;
   email: string;
-  dateOfBirth?: Date;
+  dateOfBirth: string;
   password: string;
   passwordConfirm: string;
 }
@@ -22,7 +23,7 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
       firstname: '',
       lastname: '',
       email: '',
-      dateOfBirth: undefined,
+      dateOfBirth: '',
       password: '',
       passwordConfirm: '',
     };
@@ -31,11 +32,13 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
   handleSignupSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
+    console.log('The Final object -->', this.state);
+
     this.setState({
       firstname: '',
       lastname: '',
       email: '',
-      dateOfBirth: undefined,
+      dateOfBirth: '',
       password: '',
       passwordConfirm: '',
     });
@@ -44,9 +47,13 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
   handleSignupChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ [name]: value } as Pick<SignupState, keyof SignupProps>);
+    if (event.target.type === 'checkbox') {
+      this.setState({ [name]: event.target.checked } as Pick<SignupState, keyof SignupProps>);
+    } else {
+      this.setState({ [name]: value } as Pick<SignupState, keyof SignupProps>);
+    }
 
-    console.log(`${name} : ${value}`);
+    // console.log(`${name} : ${value}`);
   };
 
   render() {
@@ -100,19 +107,14 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
 
             {/* Date of birth block */}
             <div className="signup__dateOfBirth">
-              <label className="material-input-outline" htmlFor="dateOfBirth">
-                <input
-                  id="dateOfBirth"
-                  type="text"
-                  required
-                  onFocus={(e) => (e.currentTarget.type = 'date')}
-                  onBlur={(e) => (e.currentTarget.type = 'text')}
-                />
-                <span className="placeholder"> Date of birth</span>
-                {/* <p className="input__error">
-                <i className="fas fa-exclamation-circle"></i> Email ID is missing
-              </p> */}
-              </label>
+              <FormDatePicker
+                id="dateOfBirth"
+                name="dateOfBirth"
+                value={this.state.dateOfBirth}
+                label="Date of birth"
+                handleChange={this.handleSignupChange}
+                required
+              />
             </div>
 
             {/* Password block */}
@@ -142,14 +144,14 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
             </div>
 
             {/* Agree to terms block */}
-            <div className="signup__terms">
-              <input id="terms" type="checkbox" required />
+            {/* <div className="signup__terms">
+              <input name="termsAndConditions" onChange={this.handleSignupChange} id="terms" type="checkbox" required />
               <label> I agree to terms and conditions </label>
-            </div>
+            </div> */}
           </div>
 
           {/* Sign up button */}
-          <button type="submit" className="material-btn ">
+          <button type="submit" className="material-btn signup__submit">
             Sign me up!
           </button>
         </form>
