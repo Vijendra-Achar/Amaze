@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import { signInWithGoogle } from '../../firebase/firebase.config';
+
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
 
 import './LoginPage.scss';
@@ -94,7 +96,7 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
 
           {/* Right side of the container -- login with facebook and google part */}
           <div className="login__right-side">
-            <button className="material-btn google">
+            <button onClick={signInWithGoogle} className="material-btn google">
               <i className="fab fa-google-plus-g"></i> Login with Google
             </button>
             <button className="material-btn facebook">

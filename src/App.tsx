@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
@@ -19,10 +19,12 @@ function App() {
       </nav>
 
       <section className="container">
-        <Route exact path="/" component={HomePage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/signup" component={SignUpPage} />
-        <Route exact path="/category/:categoryId" component={CategoryPage} />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/category/:categoryId" component={CategoryPage} />
+        </Switch>
       </section>
 
       <footer>
