@@ -99,9 +99,9 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
             <button onClick={signInWithGoogle} className="material-btn google">
               <i className="fab fa-google-plus-g"></i> Login with Google
             </button>
-            <button className="material-btn facebook">
+            {/* <button className="material-btn facebook">
               <i className="fab fa-facebook"></i> Login with Facebook
-            </button>
+            </button> */}
           </div>
         </div>
       </div>
