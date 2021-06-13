@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { signInWithGoogle } from '../../firebase/firebase.config';
+import { signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.config';
 
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
 
@@ -96,12 +96,15 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
 
           {/* Right side of the container -- login with facebook and google part */}
           <div className="login__right-side">
+            {/* Google sign in */}
             <button onClick={signInWithGoogle} className="material-btn google">
               <i className="fab fa-google-plus-g"></i> Login with Google
             </button>
-            {/* <button className="material-btn facebook">
+
+            {/* Facebook sign in */}
+            <button onClick={signInWithFacebook} className="material-btn facebook">
               <i className="fab fa-facebook"></i> Login with Facebook
-            </button> */}
+            </button>
           </div>
         </div>
       </div>

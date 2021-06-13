@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage/HomePage';
 import Footer from './components/Footer/Footer';
 import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import UserProfilePage from './pages/UserProfilePage/UserProfilePage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
 
 import './App.scss';
@@ -47,7 +48,7 @@ export default class App extends Component<AppProps, AppState> {
     return (
       <div>
         <nav>
-          <NavigationBar />
+          <NavigationBar currentUser={this.state.currentUser} />
         </nav>
 
         <section className="container">
@@ -55,6 +56,7 @@ export default class App extends Component<AppProps, AppState> {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/signup" component={SignUpPage} />
+            <Route exact path="/profile" component={UserProfilePage} />
             <Route exact path="/category/:categoryId" component={CategoryPage} />
           </Switch>
         </section>
