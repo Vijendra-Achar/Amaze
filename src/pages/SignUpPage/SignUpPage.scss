@@ -27,7 +27,9 @@
 
   &__email,
   &__dateOfBirth,
-  &__terms {
+  &__terms,
+  &__password,
+  &__password-confirm {
     margin: 15px 0px;
   }
 }

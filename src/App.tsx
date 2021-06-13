@@ -29,7 +29,7 @@ export default class App extends Component<AppProps, AppState> {
     };
   }
 
-  authUnsubscribe: any;
+  authUnsubscribe: any = null;
 
   componentDidMount() {
     this.authUnsubscribe = auth.onAuthStateChanged((user) => {
