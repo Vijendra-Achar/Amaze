@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { logout } from '../../firebase/firebase.config';
+import { logout } from '../../firebase/auth';
 
 import './UserProfilePage.scss';
 

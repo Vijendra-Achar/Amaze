@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import firebase, { auth } from './firebase/firebase.config';
+import { userProfileData } from './firebase/database';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
@@ -32,12 +33,9 @@ export default class App extends Component<AppProps, AppState> {
   authUnsubscribe: any = null;
 
   componentDidMount() {
-    this.authUnsubscribe = auth.onAuthStateChanged((user) => {
+    this.authUnsubscribe = auth.onAuthStateChanged(async (user) => {
       this.setState({ currentUser: user });
-      console.log('Current user -> ', this.state.currentUser);
     });
-
-    console.log('Current user method-> ', this.authUnsubscribe);
   }
 
   componentWillUnmount() {

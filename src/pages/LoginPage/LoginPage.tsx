@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { signInWithGoogle, signInWithFacebook } from '../../firebase/firebase.config';
+import { signInWithGoogle, signInWithFacebook } from '../../firebase/auth';
 
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
 
