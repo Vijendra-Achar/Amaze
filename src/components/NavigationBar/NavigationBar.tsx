@@ -59,6 +59,11 @@ class NavigationBar extends Component<NavProps, NavState> {
           </div>
 
           {/* Right side of the Navigation Bar */}
+
+          <div className="navbar__menu">
+            <i className="fas fa-bars menu__btn"></i>
+          </div>
+
           <div className="navbar__links">
             <div className="navbar__links-link">Contact</div>
             <div className="navbar__links-link">About</div>

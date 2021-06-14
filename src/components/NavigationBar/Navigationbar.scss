@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:ital,wght@0,700;1,700&display=swap');
-
 @import '../../scss/variables';
 
 .navbar {
@@ -24,6 +22,10 @@
     width: 32px;
     cursor: pointer;
     filter: invert(98%) sepia(100%) saturate(9%) hue-rotate(146deg) brightness(101%) contrast(104%);
+  }
+
+  &__menu {
+    display: none;
   }
 
   &__links {
@@ -59,4 +61,70 @@
       }
     }
   }
+}
+
+// Responsive Design
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: $mobile-view) {
+  .navbar {
+    height: 3.75em;
+    width: 100%;
+    &--container {
+      width: 80%;
+      margin: 0px auto;
+
+      height: inherit;
+
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &__logo-image {
+      height: 28px;
+      width: 28px;
+    }
+
+    &__menu {
+      display: block;
+      position: absolute;
+      right: 0;
+      padding: 0px 30px;
+      .menu__btn {
+        font-size: 1.4em;
+        color: $white-color;
+      }
+    }
+
+    &__links {
+      &-link {
+        display: none;
+
+        .bag {
+          &__icon {
+            font-size: $nav-icon-size;
+          }
+        }
+
+        .user {
+          &__icon {
+            font-size: $nav-icon-size;
+          }
+          &__username {
+            margin: 0px 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
 }

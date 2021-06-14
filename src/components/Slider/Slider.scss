@@ -2,7 +2,7 @@
 
 .slider {
   width: 100%;
-  margin: 6vh 0px;
+  margin: 3.75em 0px;
 
   &__slide {
     &-img {
@@ -12,4 +12,26 @@
       height: 75vh;
     }
   }
+}
+
+// Responsive Design
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: $mobile-view) {
+  .slider {
+    height: 35%;
+    &__slide {
+      &-img {
+        height: 100%;
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
 }
