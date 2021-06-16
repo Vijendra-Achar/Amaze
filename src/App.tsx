@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import firebase, { auth } from './firebase/firebase.config';
-import { userProfileData } from './firebase/database';
+import { createUserProfileDoc } from './firebase/database';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
@@ -16,10 +16,21 @@ import CategoryPage from './pages/CategoryPage/CategoryPage';
 import './App.scss';
 
 interface AppState {
-  currentUser: firebase.User | null;
+  currentUser: firebase.firestore.DocumentData | undefined | null;
 }
 
 interface AppProps {}
+
+interface UserProfileData {
+  createdAt: number;
+  displayName: string;
+  email: string;
+  emailVerified: boolean;
+  phoneNumber?: number | string | null;
+  photoURL: string;
+  signInMethod: string;
+  uid: string;
+}
 
 export default class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
@@ -33,8 +44,21 @@ export default class App extends Component<AppProps, AppState> {
   authUnsubscribe: any = null;
 
   componentDidMount() {
-    this.authUnsubscribe = auth.onAuthStateChanged(async (user) => {
-      this.setState({ currentUser: user });
+    this.authUnsubscribe = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userDocRef = await createUserProfileDoc(userAuth);
+
+        userDocRef?.onSnapshot((snapShot) => {
+          this.setState(
+            {
+              currentUser: snapShot.data(),
+            },
+            () => {
+              console.log('Current user data from firebase', this.state.currentUser);
+            },
+          );
+        });
+      }
     });
   }
 

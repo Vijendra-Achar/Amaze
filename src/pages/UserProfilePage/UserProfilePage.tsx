@@ -21,11 +21,10 @@ class UserProfilePage extends Component<UserProfileProps, UserProfileState> {
   logoutAndRedirect = () => {
     logout()
       .then(() => {
-        console.log('THE CONTROL IS HERE');
         this.props.history.push('/');
       })
       .catch((error) => {
-        console.error('An Error occured', error);
+        console.error('An Error occured while logging out', error);
       });
   };
 

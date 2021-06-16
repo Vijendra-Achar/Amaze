@@ -9,7 +9,7 @@ import amazonLogo from '../../assets/amazon.svg';
 
 import './Navigationbar.scss';
 interface NavProps extends RouteComponentProps {
-  currentUser: firebase.User | null;
+  currentUser: firebase.firestore.DocumentData | undefined | null;
 }
 
 interface NavState {}
