@@ -21,17 +21,6 @@ interface AppState {
 
 interface AppProps {}
 
-interface UserProfileData {
-  createdAt: number;
-  displayName: string;
-  email: string;
-  emailVerified: boolean;
-  phoneNumber?: number | string | null;
-  photoURL: string;
-  signInMethod: string;
-  uid: string;
-}
-
 export default class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
@@ -49,15 +38,12 @@ export default class App extends Component<AppProps, AppState> {
         const userDocRef = await createUserProfileDoc(userAuth);
 
         userDocRef?.onSnapshot((snapShot) => {
-          this.setState(
-            {
-              currentUser: snapShot.data(),
-            },
-            () => {
-              console.log('Current user data from firebase', this.state.currentUser);
-            },
-          );
+          this.setState({
+            currentUser: snapShot.data(),
+          });
         });
+      } else {
+        this.setState({ currentUser: null });
       }
     });
   }

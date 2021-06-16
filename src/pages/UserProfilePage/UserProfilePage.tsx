@@ -14,9 +14,7 @@ class UserProfilePage extends Component<UserProfileProps, UserProfileState> {
     super(props);
   }
 
-  componentDidMount() {
-    console.log('The router props -->', this.props);
-  }
+  componentDidMount() {}
 
   logoutAndRedirect = () => {
     logout()

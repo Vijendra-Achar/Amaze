@@ -4,13 +4,24 @@ import firebase, { auth } from './firebase.config';
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
+export const signInWithGoogle = () => {
+  return auth.signInWithPopup(googleProvider);
+};
 
 // Configuration for Facebook sign in
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 facebookProvider.setCustomParameters({ display: 'popup', prompt: 'select_account' });
 
-export const signInWithFacebook = () => auth.signInWithPopup(facebookProvider);
+export const signInWithFacebook = () => {
+  return auth.signInWithPopup(facebookProvider);
+};
+
+// Creating a new user with Email and Password
+export const signUpWithEmailAndPassword = (email: string, password: string) => {
+  return auth.createUserWithEmailAndPassword(email, password);
+};
 
 // Configuration for logout
-export const logout = () => firebase.auth().signOut();
+export const logout = () => {
+  return firebase.auth().signOut();
+};

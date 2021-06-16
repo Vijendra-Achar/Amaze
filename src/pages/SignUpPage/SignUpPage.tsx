@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
+import { signUpWithEmailAndPassword } from '../../firebase/auth';
+
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
-import FormDatePicker from '../../components/FormDatePicker/FormDatePicker';
 
 import './SignUpPage.scss';
 
@@ -10,7 +11,6 @@ interface SignupState {
   firstname: string;
   lastname: string;
   email: string;
-  dateOfBirth: string;
   password: string;
   passwordConfirm: string;
 }
@@ -23,7 +23,6 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
       firstname: '',
       lastname: '',
       email: '',
-      dateOfBirth: '',
       password: '',
       passwordConfirm: '',
     };
@@ -32,13 +31,16 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
   handleSignupSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
-    console.log('The Final object -->', this.state);
+    if (this.state.password === this.state.passwordConfirm) {
+      signUpWithEmailAndPassword(this.state.email, this.state.password).then((data) => {
+        console.log('New User signup', data);
+      });
+    }
 
     this.setState({
       firstname: '',
       lastname: '',
       email: '',
-      dateOfBirth: '',
       password: '',
       passwordConfirm: '',
     });
@@ -101,18 +103,6 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
                 handleChange={this.handleSignupChange}
                 type="text"
                 label="Email"
-                required
-              />
-            </div>
-
-            {/* Date of birth block */}
-            <div className="signup__dateOfBirth">
-              <FormDatePicker
-                id="dateOfBirth"
-                name="dateOfBirth"
-                value={this.state.dateOfBirth}
-                label="Date of birth"
-                handleChange={this.handleSignupChange}
                 required
               />
             </div>
