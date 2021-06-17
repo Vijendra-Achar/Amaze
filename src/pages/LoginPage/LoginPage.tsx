@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 
+import firebase from '../../firebase/firebase.config';
 import { signInWithGoogle, signInWithFacebook } from '../../firebase/auth';
+import { createUserProfileDoc } from '../../firebase/database';
 
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
 
 import './LoginPage.scss';
 
-interface LoginProps {}
+interface LoginProps extends RouteComponentProps {}
 
 interface LoginState {
   emailId: string;
@@ -23,6 +25,25 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
     };
   }
 
+  // Handle Google Sign in
+  handleSignInWithGoogle = () => {
+    signInWithGoogle().then((userAuth: firebase.auth.UserCredential) => {
+      createUserProfileDoc(userAuth.user).then(() => {
+        this.props.history.push('/');
+      });
+    });
+  };
+
+  // Handle Facebook sign in
+  handleSignInWithFacebook = () => {
+    signInWithFacebook().then((userAuth: firebase.auth.UserCredential) => {
+      createUserProfileDoc(userAuth.user).then(() => {
+        this.props.history.push('/');
+      });
+    });
+  };
+
+  // Handle Login with email and password
   handleLoginSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
@@ -97,12 +118,12 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
           {/* Right side of the container -- login with facebook and google part */}
           <div className="login__right-side">
             {/* Google sign in */}
-            <button onClick={signInWithGoogle} className="material-btn google">
+            <button onClick={this.handleSignInWithGoogle} className="material-btn google">
               <i className="fab fa-google-plus-g"></i> Login with Google
             </button>
 
             {/* Facebook sign in */}
-            <button onClick={signInWithFacebook} className="material-btn facebook">
+            <button onClick={this.handleSignInWithFacebook} className="material-btn facebook">
               <i className="fab fa-facebook"></i> Login with Facebook
             </button>
           </div>

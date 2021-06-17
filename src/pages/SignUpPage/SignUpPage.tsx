@@ -5,8 +5,10 @@ import { signUpWithEmailAndPassword } from '../../firebase/auth';
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
 
 import './SignUpPage.scss';
+import { RouteComponentProps } from 'react-router-dom';
+import { createUserProfileDoc } from '../../firebase/database';
 
-interface SignupProps {}
+interface SignupProps extends RouteComponentProps<any> {}
 interface SignupState {
   firstname: string;
   lastname: string;
@@ -32,28 +34,39 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
     event.preventDefault();
 
     if (this.state.password === this.state.passwordConfirm) {
-      signUpWithEmailAndPassword(this.state.email, this.state.password).then((data) => {
-        console.log('New User signup', data);
-      });
-    }
+      signUpWithEmailAndPassword(this.state.email, this.state.password)
+        .then((userAuth) => {
+          createUserProfileDoc(userAuth.user, `${this.state.firstname} ${this.state.lastname}`);
 
-    this.setState({
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: '',
-      passwordConfirm: '',
-    });
+          userAuth.user
+            ?.updateProfile({
+              displayName: `${this.state.firstname} ${this.state.lastname}`,
+            })
+            .then(() => {
+              this.setState({
+                firstname: '',
+                lastname: '',
+                email: '',
+                password: '',
+                passwordConfirm: '',
+              });
+
+              console.log('Updated user auth object', userAuth.user);
+              this.props.history.push('/');
+            });
+        })
+        .catch((error) => {
+          console.log('Error while sign up', error.message);
+        });
+    } else {
+      console.log('Passwords do not match');
+    }
   };
 
   handleSignupChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
 
-    if (event.target.type === 'checkbox') {
-      this.setState({ [name]: event.target.checked } as Pick<SignupState, keyof SignupProps>);
-    } else {
-      this.setState({ [name]: value } as Pick<SignupState, keyof SignupProps>);
-    }
+    this.setState({ [name]: value } as Pick<SignupState, keyof SignupState>);
 
     // console.log(`${name} : ${value}`);
   };

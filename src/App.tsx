@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import firebase, { auth } from './firebase/firebase.config';
-import { createUserProfileDoc } from './firebase/database';
+import { createUserProfileDoc, getCurrentUserDocument } from './firebase/database';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
@@ -33,9 +33,9 @@ export default class App extends Component<AppProps, AppState> {
   authUnsubscribe: any = null;
 
   componentDidMount() {
-    this.authUnsubscribe = auth.onAuthStateChanged(async (userAuth) => {
+    this.authUnsubscribe = auth.onAuthStateChanged((userAuth) => {
       if (userAuth) {
-        const userDocRef = await createUserProfileDoc(userAuth);
+        const userDocRef = getCurrentUserDocument(userAuth);
 
         userDocRef?.onSnapshot((snapShot) => {
           this.setState({
