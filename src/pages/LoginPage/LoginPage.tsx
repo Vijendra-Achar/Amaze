@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, RouteComponentProps } from 'react-router-dom';
 
 import firebase from '../../firebase/firebase.config';
-import { signInWithGoogle, signInWithFacebook } from '../../firebase/auth';
+import { signInWithGoogle, signInWithFacebook, signInWithEmailAndPassword } from '../../firebase/auth';
 import { createUserProfileDoc } from '../../firebase/database';
 
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
@@ -14,6 +14,8 @@ interface LoginProps extends RouteComponentProps {}
 interface LoginState {
   emailId: string;
   password: string;
+  errorMessage: string;
+  isLoading: boolean;
 }
 export default class LoginPage extends Component<LoginProps, LoginState> {
   constructor(props: LoginProps) {
@@ -22,6 +24,8 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
     this.state = {
       emailId: '',
       password: '',
+      errorMessage: '',
+      isLoading: false,
     };
   }
 
@@ -43,19 +47,33 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
     });
   };
 
-  // Handle Login with email and password
-  handleLoginSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
+  // Handle sign with email and password
+  handleSignInWithEmailAndPassword: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
 
-    this.setState({ emailId: '', password: '' });
+    if (this.state.emailId && this.state.password) {
+      this.setState({ isLoading: true, errorMessage: '' });
+
+      signInWithEmailAndPassword(this.state.emailId, this.state.password)
+        .then((userAuth) => {
+          if (userAuth) {
+            console.log('The user has been signed in successfully', userAuth);
+            // this.setState({ emailId: '', password: '' });
+            this.setState({ isLoading: false });
+            this.props.history.push('/');
+          }
+        })
+        .catch((error) => {
+          this.setState({ isLoading: false, errorMessage: error.message });
+          console.log('An error occured while loging in', error);
+        });
+    }
   };
 
   handleLoginChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ [name]: value } as Pick<LoginState, keyof LoginState>);
-
-    console.log(`${name} : ${value}`);
+    this.setState({ [name]: value } as Pick<LoginState, 'emailId' | 'password'>);
   };
 
   render() {
@@ -67,7 +85,7 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
         <div className="login__main-block">
           {/* Left side of the container -- login with email and password part */}
           <div className="login__left-side">
-            <form onSubmit={this.handleLoginSubmit}>
+            <form onSubmit={this.handleSignInWithEmailAndPassword}>
               <div className="login_email">
                 <FormTextInput
                   name="emailId"
@@ -91,9 +109,23 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
                 />
               </div>
 
+              {/* Error message */}
+              {this.state.errorMessage && (
+                <p className="signup error-message">
+                  <i className="fas fa-exclamation-circle"></i> {this.state.errorMessage}
+                </p>
+              )}
+
               <div className="login__button">
-                <button type="submit" className="material-btn">
-                  Sign me in!
+                <button type="submit" className="material-btn btn">
+                  {!this.state.isLoading && <span className="btn__text">Sign me up!</span>}
+
+                  {this.state.isLoading && (
+                    <span className="btn__loader">
+                      <div className="login__loader loading-spinner"></div>
+                      Signing you up...
+                    </span>
+                  )}
                 </button>
               </div>
             </form>

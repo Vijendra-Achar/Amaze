@@ -21,6 +21,11 @@ export const signUpWithEmailAndPassword = (email: string, password: string) => {
   return auth.createUserWithEmailAndPassword(email, password);
 };
 
+// Sign in with email and pasword
+export const signInWithEmailAndPassword = (email: string, password: string) => {
+  return auth.signInWithEmailAndPassword(email, password);
+};
+
 // Configuration for logout
 export const logout = () => {
   return firebase.auth().signOut();

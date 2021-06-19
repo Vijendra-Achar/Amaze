@@ -15,6 +15,8 @@ interface SignupState {
   email: string;
   password: string;
   passwordConfirm: string;
+  errorMessage: string;
+  isLoading: boolean;
 }
 
 export default class SignUpPage extends Component<SignupProps, SignupState> {
@@ -27,6 +29,8 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
       email: '',
       password: '',
       passwordConfirm: '',
+      errorMessage: '',
+      isLoading: false,
     };
   }
 
@@ -34,6 +38,7 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
     event.preventDefault();
 
     if (this.state.password === this.state.passwordConfirm) {
+      this.setState({ isLoading: true, errorMessage: '' });
       signUpWithEmailAndPassword(this.state.email, this.state.password)
         .then((userAuth) => {
           createUserProfileDoc(userAuth.user, `${this.state.firstname} ${this.state.lastname}`);
@@ -49,26 +54,32 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
                 email: '',
                 password: '',
                 passwordConfirm: '',
+                errorMessage: '',
               });
 
-              console.log('Updated user auth object', userAuth.user);
+              this.setState({ isLoading: false });
               this.props.history.push('/');
             });
         })
         .catch((error) => {
+          this.setState({ errorMessage: error.message });
+          this.setState({ isLoading: false });
+
           console.log('Error while sign up', error.message);
         });
     } else {
-      console.log('Passwords do not match');
+      this.setState({ errorMessage: 'Passwords do not match' });
+      this.setState({ isLoading: false });
     }
   };
 
   handleSignupChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.target;
 
-    this.setState({ [name]: value } as Pick<SignupState, keyof SignupState>);
-
-    // console.log(`${name} : ${value}`);
+    this.setState({ [name]: value } as Pick<
+      SignupState,
+      'lastname' | 'password' | 'passwordConfirm' | 'email' | 'firstname'
+    >);
   };
 
   render() {
@@ -146,16 +157,24 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
               />
             </div>
 
-            {/* Agree to terms block */}
-            {/* <div className="signup__terms">
-              <input name="termsAndConditions" onChange={this.handleSignupChange} id="terms" type="checkbox" required />
-              <label> I agree to terms and conditions </label>
-            </div> */}
+            {/* Error message */}
+            {this.state.errorMessage && (
+              <p className="signup error-message">
+                <i className="fas fa-exclamation-circle"></i> {this.state.errorMessage}
+              </p>
+            )}
           </div>
 
           {/* Sign up button */}
-          <button type="submit" className="material-btn signup__submit">
-            Sign me up!
+          <button type="submit" className="material-btn btn signup__submit">
+            {!this.state.isLoading && <span className="btn__text">Sign me up!</span>}
+
+            {this.state.isLoading && (
+              <span className="btn__loader">
+                <div className="signup__loader loading-spinner"></div>
+                Signing you up...
+              </span>
+            )}
           </button>
         </form>
       </div>

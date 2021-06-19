@@ -71,8 +71,7 @@ class NavigationBar extends Component<NavProps, NavState> {
               <i className="fas fa-shopping-bag bag__icon"></i>
             </div>
 
-            {/* {this.state.isUserInfoLoading && <div className="navbar__loader loading-spinner"></div>} */}
-            {<div className="navbar__links-link user">{loginOrUserBtn}</div>}
+            <div className="navbar__links-link user">{loginOrUserBtn}</div>
 
             {/* <div className="navbar__links-link user">{loginOrUserBtn}</div> */}
           </div>
