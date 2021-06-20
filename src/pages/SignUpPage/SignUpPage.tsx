@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { signUpWithEmailAndPassword } from '../../firebase/auth';
 
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
+import InputButton from '../../components/InputButton/InputButton';
 
 import './SignUpPage.scss';
 import { RouteComponentProps } from 'react-router-dom';
@@ -39,6 +40,7 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
 
     if (this.state.password === this.state.passwordConfirm) {
       this.setState({ isLoading: true, errorMessage: '' });
+
       signUpWithEmailAndPassword(this.state.email, this.state.password)
         .then((userAuth) => {
           createUserProfileDoc(userAuth.user, `${this.state.firstname} ${this.state.lastname}`);
@@ -166,16 +168,14 @@ export default class SignUpPage extends Component<SignupProps, SignupState> {
           </div>
 
           {/* Sign up button */}
-          <button type="submit" className="material-btn btn signup__submit">
-            {!this.state.isLoading && <span className="btn__text">Sign me up!</span>}
 
-            {this.state.isLoading && (
-              <span className="btn__loader">
-                <div className="signup__loader loading-spinner"></div>
-                Signing you up...
-              </span>
-            )}
-          </button>
+          <InputButton
+            category="primary"
+            type="submit"
+            label="Sign me up!"
+            isLoading={this.state.isLoading}
+            isWideBtn
+          />
         </form>
       </div>
     );

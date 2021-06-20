@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 
+import InputButton from '../../components/InputButton/InputButton';
+
 import { logout } from '../../firebase/auth';
 
 import './UserProfilePage.scss';
@@ -30,9 +32,11 @@ class UserProfilePage extends Component<UserProfileProps, UserProfileState> {
     return (
       <div className="container__main">
         <div>Hello from the Profiles page </div>
-        <button className="material-btn" onClick={this.logoutAndRedirect}>
+        {/* <button className="material-btn" onClick={this.logoutAndRedirect}>
           Sign out
-        </button>
+        </button> */}
+
+        <InputButton label="Sign out" category="danger" type="button" />
       </div>
     );
   }

@@ -1,0 +1,56 @@
+@import './../../scss/variables';
+
+.material-btn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25em;
+  padding: 10px 20px;
+  color: $white-color;
+  border-radius: 5px;
+  transition: all 0.2s ease-in;
+
+  &:disabled {
+    background-color: $white-color !important;
+    color: $black-color;
+  }
+
+  &.primary {
+    background-color: $primary-color;
+  }
+
+  &.danger {
+    background-color: $danger-color;
+  }
+
+  &.google {
+    background-color: $google-red-color;
+  }
+
+  &.facebook {
+    background-color: $facebook-blue-color;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .btn {
+    &__loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &.wide-btn {
+    width: 350px;
+    padding: 15px 25px;
+  }
+
+  .loader {
+    margin: 0px 10px;
+    width: 23px;
+    height: 23px;
+  }
+}

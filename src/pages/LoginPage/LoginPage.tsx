@@ -6,6 +6,7 @@ import { signInWithGoogle, signInWithFacebook, signInWithEmailAndPassword } from
 import { createUserProfileDoc } from '../../firebase/database';
 
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
+import InputButton from '../../components/InputButton/InputButton';
 
 import './LoginPage.scss';
 
@@ -117,16 +118,13 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
               )}
 
               <div className="login__button">
-                <button type="submit" className="material-btn btn">
-                  {!this.state.isLoading && <span className="btn__text">Sign me up!</span>}
-
-                  {this.state.isLoading && (
-                    <span className="btn__loader">
-                      <div className="login__loader loading-spinner"></div>
-                      Signing you up...
-                    </span>
-                  )}
-                </button>
+                <InputButton
+                  type="submit"
+                  isLoading={this.state.isLoading}
+                  label="Log me in!"
+                  category="primary"
+                  isWideBtn
+                />
               </div>
             </form>
 
@@ -150,14 +148,20 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
           {/* Right side of the container -- login with facebook and google part */}
           <div className="login__right-side">
             {/* Google sign in */}
-            <button onClick={this.handleSignInWithGoogle} className="material-btn google">
-              <i className="fab fa-google-plus-g"></i> Login with Google
-            </button>
+            <div onClick={this.handleSignInWithGoogle} className="login__button ">
+              <InputButton
+                type="button"
+                label="Login with Google"
+                category="google"
+                icon="fa-google-plus-g"
+                isWideBtn
+              />
+            </div>
 
             {/* Facebook sign in */}
-            <button onClick={this.handleSignInWithFacebook} className="material-btn facebook">
-              <i className="fab fa-facebook"></i> Login with Facebook
-            </button>
+            <div onClick={this.handleSignInWithFacebook} className="login__button">
+              <InputButton type="button" label="Login with Facebook" category="facebook" icon="fa-facebook" isWideBtn />
+            </div>
           </div>
         </div>
       </div>

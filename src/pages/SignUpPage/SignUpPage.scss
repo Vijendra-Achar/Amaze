@@ -25,19 +25,19 @@
     }
   }
 
-  .btn {
-    &__loader {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-  }
+  // .btn {
+  //   &__loader {
+  //     display: flex;
+  //     justify-content: center;
+  //     align-items: center;
+  //   }
+  // }
 
-  &__loader {
-    margin: 0px 10px;
-    width: 23px;
-    height: 23px;
-  }
+  // &__loader {
+  //   margin: 0px 10px;
+  //   width: 23px;
+  //   height: 23px;
+  // }
 
   &__email,
   &__dateOfBirth,
