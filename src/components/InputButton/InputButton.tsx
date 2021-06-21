@@ -11,11 +11,17 @@ interface InputButonProps {
   width?: string;
   icon?: string;
   isWideBtn?: boolean;
+  onClickHandler?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function InputButton({ isLoading, type, label, category, icon, isWideBtn }: InputButonProps) {
+function InputButton({ isLoading, type, label, category, icon, isWideBtn, onClickHandler }: InputButonProps) {
   return (
-    <button type={type} disabled={isLoading} className={`material-btn btn  ${category} ${isWideBtn ? 'wide-btn' : ''}`}>
+    <button
+      onClick={onClickHandler}
+      type={type}
+      disabled={isLoading}
+      className={`material-btn btn ${category} ${isWideBtn ? 'wide-btn' : ''}`}
+    >
       {!isLoading && (
         <span className="btn__text">
           {icon && <i className={'fab ' + icon}></i>} {label}

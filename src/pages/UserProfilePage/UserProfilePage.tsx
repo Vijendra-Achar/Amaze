@@ -36,7 +36,7 @@ class UserProfilePage extends Component<UserProfileProps, UserProfileState> {
           Sign out
         </button> */}
 
-        <InputButton label="Sign out" category="danger" type="button" />
+        <InputButton onClickHandler={this.logoutAndRedirect} label="Sign out" category="danger" type="button" />
       </div>
     );
   }

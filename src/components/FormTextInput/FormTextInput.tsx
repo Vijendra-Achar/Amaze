@@ -24,9 +24,6 @@ function FormTextInput({ handleChange, value, type, label, name, id, required }:
           required={required ? true : false}
         />
         <span className="placeholder">{label}</span>
-        {/* <p className="input__error">
-              <i className="fas fa-exclamation-circle"></i> Email ID is missing
-            </p> */}
       </label>
     </div>
   );

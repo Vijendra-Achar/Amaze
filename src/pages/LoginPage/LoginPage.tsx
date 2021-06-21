@@ -59,7 +59,6 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
         .then((userAuth) => {
           if (userAuth) {
             console.log('The user has been signed in successfully', userAuth);
-            // this.setState({ emailId: '', password: '' });
             this.setState({ isLoading: false });
             this.props.history.push('/');
           }
@@ -148,8 +147,9 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
           {/* Right side of the container -- login with facebook and google part */}
           <div className="login__right-side">
             {/* Google sign in */}
-            <div onClick={this.handleSignInWithGoogle} className="login__button ">
+            <div className="login__button">
               <InputButton
+                onClickHandler={this.handleSignInWithGoogle}
                 type="button"
                 label="Login with Google"
                 category="google"
@@ -159,8 +159,15 @@ export default class LoginPage extends Component<LoginProps, LoginState> {
             </div>
 
             {/* Facebook sign in */}
-            <div onClick={this.handleSignInWithFacebook} className="login__button">
-              <InputButton type="button" label="Login with Facebook" category="facebook" icon="fa-facebook" isWideBtn />
+            <div className="login__button">
+              <InputButton
+                onClickHandler={this.handleSignInWithFacebook}
+                type="button"
+                label="Login with Facebook"
+                category="facebook"
+                icon="fa-facebook"
+                isWideBtn
+              />
             </div>
           </div>
         </div>
