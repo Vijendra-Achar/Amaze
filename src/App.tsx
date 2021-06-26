@@ -2,7 +2,14 @@ import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import firebase, { auth } from './firebase/firebase.config';
-import { createUserProfileDoc, getCurrentUserDocument } from './firebase/database';
+import { getCurrentUserDocument } from './firebase/database';
+
+import { Dispatch } from 'redux';
+import { connect } from 'react-redux';
+
+import { setCurrentUser } from './store/user/user.actions';
+
+import { UserDocumentData } from './store/user/user.interface';
 
 import NavigationBar from './components/NavigationBar/NavigationBar';
 
@@ -19,9 +26,11 @@ interface AppState {
   currentUser: firebase.firestore.DocumentData | undefined | null;
 }
 
-interface AppProps {}
+interface AppProps {
+  setCurrentUser: Function;
+}
 
-export default class App extends Component<AppProps, AppState> {
+class App extends Component<AppProps, AppState> {
   constructor(props: AppProps) {
     super(props);
 
@@ -38,12 +47,12 @@ export default class App extends Component<AppProps, AppState> {
         const userDocRef = getCurrentUserDocument(userAuth);
 
         userDocRef?.onSnapshot((snapShot) => {
-          this.setState({
-            currentUser: snapShot.data(),
+          this.props.setCurrentUser({
+            ...snapShot.data(),
           });
         });
       } else {
-        this.setState({ currentUser: null });
+        this.props.setCurrentUser(null);
       }
     });
   }
@@ -56,7 +65,7 @@ export default class App extends Component<AppProps, AppState> {
     return (
       <div>
         <nav>
-          <NavigationBar currentUser={this.state.currentUser} />
+          <NavigationBar />
         </nav>
 
         <section className="container">
@@ -76,3 +85,9 @@ export default class App extends Component<AppProps, AppState> {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  setCurrentUser: (user: UserDocumentData) => dispatch(setCurrentUser(user)),
+});
+
+export default connect(null, mapDispatchToProps)(App);

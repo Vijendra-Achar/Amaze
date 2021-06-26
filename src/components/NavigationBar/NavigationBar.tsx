@@ -5,11 +5,13 @@ import firebase from '../../firebase/firebase.config';
 import { withRouter } from 'react-router';
 import { RouteComponentProps } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+
 import amazonLogo from '../../assets/amazon.svg';
 
 import './Navigationbar.scss';
 interface NavProps extends RouteComponentProps {
-  currentUser: firebase.firestore.DocumentData | undefined | null;
+  currentUser: firebase.firestore.DocumentData | undefined | null | {};
 }
 
 interface NavState {}
@@ -81,4 +83,8 @@ class NavigationBar extends Component<NavProps, NavState> {
   }
 }
 
-export default withRouter(NavigationBar);
+const mapStateToProps = (state: any) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(withRouter(NavigationBar));
