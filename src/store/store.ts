@@ -8,4 +8,6 @@ const middlewares = [logger];
 
 const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
+export type RootState = ReturnType<typeof store.getState>;
+
 export default store;

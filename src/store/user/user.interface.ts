@@ -7,3 +7,14 @@ export interface UserReducerAction {
 export interface UserDocumentData {
   currentUser: firebase.firestore.DocumentData | undefined | null;
 }
+
+export interface UserDocumentStructure {
+  createdAt: Date;
+  displayName: String;
+  email: String;
+  emailVerified: boolean;
+  phoneNumber: Number | String;
+  photoURL: String;
+  signInMethod: String;
+  uid: String;
+}
