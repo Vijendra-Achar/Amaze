@@ -22,6 +22,8 @@ export const createUserProfileDoc = async (userAuth: firebase.User | null, userN
 
     const createdAt = +new Date();
 
+    const isActive = true;
+
     try {
       await userDocRef.set({
         displayName,
@@ -32,6 +34,7 @@ export const createUserProfileDoc = async (userAuth: firebase.User | null, userN
         phoneNumber,
         createdAt,
         signInMethod,
+        isActive,
       });
     } catch (error) {
       console.log('Error occured while creating user profile', error.message);

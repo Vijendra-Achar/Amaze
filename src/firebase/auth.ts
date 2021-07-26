@@ -26,6 +26,11 @@ export const signInWithEmailAndPassword = (email: string, password: string) => {
   return auth.signInWithEmailAndPassword(email, password);
 };
 
+// Change password for the current User
+export const changePassword = (newPassword: string) => {
+  return auth.currentUser?.updatePassword(newPassword);
+};
+
 // Configuration for logout
 export const logout = () => {
   return firebase.auth().signOut();

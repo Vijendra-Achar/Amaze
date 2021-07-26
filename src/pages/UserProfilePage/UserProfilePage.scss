@@ -39,6 +39,10 @@
       font-size: 1.5em;
     }
 
+    .account {
+      padding-top: 4%;
+    }
+
     .details {
       padding-top: 4%;
 
@@ -46,6 +50,19 @@
 
       display: flex;
       justify-content: space-between;
+
+      &-message {
+        width: 100%;
+      }
+
+      &__input {
+        padding-top: 4%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+      }
 
       .info {
         .heading {

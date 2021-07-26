@@ -7,7 +7,7 @@ interface FormTextInputProps {
   id?: string;
   handleChange: React.ChangeEventHandler<HTMLInputElement>;
   value: string;
-  type: string;
+  type: 'email' | 'text' | 'password';
   required?: boolean;
 }
 

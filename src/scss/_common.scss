@@ -41,3 +41,14 @@ a {
     margin: 0px 8px 0px 0px;
   }
 }
+
+.success-message {
+  font-size: 1em;
+  margin: 10px 2px 10px 0px;
+  width: 350px;
+  color: $success-color;
+
+  i {
+    margin: 0px 8px 0px 0px;
+  }
+}

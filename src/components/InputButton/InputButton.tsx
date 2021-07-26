@@ -31,7 +31,7 @@ function InputButton({ isLoading, type, label, category, icon, isWideBtn, onClic
       {isLoading && (
         <span className="btn__loader">
           <div className="loader loading-spinner"></div>
-          Please wait...
+          {/* Please wait... */}
         </span>
       )}
     </button>
