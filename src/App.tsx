@@ -19,6 +19,8 @@ import LoginPage from './pages/LoginPage/LoginPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 import UserProfilePage from './pages/UserProfilePage/UserProfilePage';
 import CategoryPage from './pages/CategoryPage/CategoryPage';
+import BagPage from './pages/BagPage/BagPage';
+import WishlistPage from './pages/WishlistPage/WishlistPage';
 
 import './App.scss';
 
@@ -74,6 +76,8 @@ class App extends Component<AppProps, AppState> {
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/signup" component={SignUpPage} />
             <Route exact path="/profile" component={UserProfilePage} />
+            <Route exact path="/bag" component={BagPage} />
+            <Route exact path="/wishlist" component={WishlistPage} />
             <Route exact path="/category/:categoryId" component={CategoryPage} />
           </Switch>
         </section>

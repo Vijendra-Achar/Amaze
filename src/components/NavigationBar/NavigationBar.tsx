@@ -69,13 +69,16 @@ class NavigationBar extends Component<NavProps, NavState> {
           <div className="navbar__links">
             <div className="navbar__links-link">Contact</div>
             <div className="navbar__links-link">About</div>
-            <div className="navbar__links-link bag">
+
+            <div onClick={() => this.props.history.push('/wishlist')} className="navbar__links-link wishlist">
+              <i className="far fa-heart wishlist__icon"></i>
+            </div>
+
+            <div onClick={() => this.props.history.push('/bag')} className="navbar__links-link bag">
               <i className="fas fa-shopping-bag bag__icon"></i>
             </div>
 
             <div className="navbar__links-link user">{loginOrUserBtn}</div>
-
-            {/* <div className="navbar__links-link user">{loginOrUserBtn}</div> */}
           </div>
         </div>
       </div>

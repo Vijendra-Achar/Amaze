@@ -51,6 +51,12 @@
         }
       }
 
+      .wishlist {
+        &__icon {
+          font-size: $nav-icon-size;
+        }
+      }
+
       .user {
         &__icon {
           font-size: $nav-icon-size;
