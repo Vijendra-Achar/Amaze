@@ -1,0 +1,19 @@
+.bag {
+  &__empty-cart {
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    &-img {
+      height: 400px;
+      width: 400px;
+    }
+
+    &-message {
+      margin: 25px 0;
+      font-size: 1.25em;
+    }
+  }
+}
