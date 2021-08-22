@@ -8,8 +8,6 @@ import { createUserProfileDoc } from '../../firebase/database';
 import FormTextInput from '../../components/FormTextInput/FormTextInput';
 import InputButton from '../../components/InputButton/InputButton';
 
-import Snackbar from '@material-ui/core/Snackbar';
-
 import './LoginPage.scss';
 
 interface LoginProps extends RouteComponentProps {}

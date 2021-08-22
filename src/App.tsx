@@ -22,6 +22,8 @@ import CategoryPage from './pages/CategoryPage/CategoryPage';
 import BagPage from './pages/BagPage/BagPage';
 import WishlistPage from './pages/WishlistPage/WishlistPage';
 
+import Snackbar from './components/Snackbar/Snackbar';
+
 import './App.scss';
 
 interface AppState {
@@ -80,6 +82,8 @@ class App extends Component<AppProps, AppState> {
             <Route exact path="/wishlist" component={WishlistPage} />
             <Route exact path="/category/:categoryId" component={CategoryPage} />
           </Switch>
+
+          <Snackbar />
         </section>
 
         <footer>
